@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  symfony_nginx:
+    build: ./build/nginx/
+    container_name: test_symfony-nginx
+    ports:
+      - 8089:80
+    depends_on:
+      - symfony_php
+    volumes:
+    - /app:/var/www/symfony
+    networks: 
+      - igniter
+      
+  symfony_php:
+    container_name: test_symfony-php
+    build: ./build/php/
+    expose:
+      - 9000
+    volumes:
+      - ./app:/var/www/symfony
+    networks: 
+      - igniter
+
+networks:
+    igniter:
+        external:
+            name: codeigniter_default
