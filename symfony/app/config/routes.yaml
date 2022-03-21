@@ -1,0 +1,13 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+add_edit_task:
+    path: /add_edit_task
+    controller: App\Controller\TaskController::addEdit
+    methods: POST
+
+remove_task:
+    path: /remove_task
+    controller: App\Controller\TaskController::remove
+    methods: POST
